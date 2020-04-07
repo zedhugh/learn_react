@@ -1,6 +1,10 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
+import Counter from './counter';
+import { store } from './redux_demo';
+
 
 function App() {
   return (
@@ -18,6 +22,9 @@ function App() {
         >
           Learn React
         </a>
+        <Provider store={store}>
+          <Counter />
+        </Provider>
       </header>
     </div>
   );
