@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 import Counter from './counter';
+import Text from './test';
 import { store } from './redux_demo';
 
 
@@ -20,6 +21,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
+          <Text />
           Learn React
         </a>
         <Provider store={store}>
