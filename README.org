@@ -9,3 +9,9 @@
    但是除路由匹配的子路由组件外，其余组件被隐藏。
 ** Link
    该组件可以用相对路径和绝对路径
+* react-redux
+** connect
+   在使用该方法包裹组件时，如果组件中有 dispatch 异步 action ，则该组件
+   需要是用 class 声明的组件！因为在函数组件中，有很大可能会存在无限
+   dispatch 异步 action 的情况，此时将 dispatch 异步 action 的函数调用放
+   在 componentDidMount 生命周期中调用是一个很好的办法
