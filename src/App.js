@@ -5,7 +5,7 @@ import './App.css';
 import Counter from './counter';
 import Text from './test';
 import { store } from './redux_demo';
-
+import Doctor from './doctor';
 
 function App() {
   return (
@@ -21,10 +21,11 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Text />
           Learn React
         </a>
+        <Text />
         <Provider store={store}>
+          <Doctor />
           <Counter />
         </Provider>
       </header>

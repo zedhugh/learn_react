@@ -1,5 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import doctor from './doctorReducers';
 
 const ADD = "ADD+";
 
@@ -19,7 +20,7 @@ const counter = (state = 0, action) => {
 }
 
 const rootReducer = combineReducers({
-    counter
+    counter, doctor
 });
 
 export const asyncEvent = (num) => (dispatch, getState) => {
