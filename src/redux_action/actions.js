@@ -1,7 +1,9 @@
 import { createAction } from 'redux-actions';
 
-const INC = "INCREATE";
-const DEC = "DECREATE";
+export const INC = "INCREATE";
+export const DEC = "DECREATE";
+export const CANCEL_INC = "CANCEL_INCREATE";
 
-const inc = createAction(INC);
-const dec = createAction(DEC);
+export const inc = createAction(INC);
+export const dec = createAction(DEC);
+export const cancel_inc = createAction(CANCEL_INC);

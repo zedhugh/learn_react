@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { add, asyncEvent } from './redux_demo';
+import { inc, dec, cancel_inc } from './redux_action';
 
 class Counter extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class Counter extends Component {
   }
 
   render() {
+    const { inc, dec, cancel } = this.props;
     return (
       <h1>
         <span>Counter:</span>
@@ -45,6 +47,11 @@ class Counter extends Component {
           <input ref={this.myRef} onChange={this.handleChange} type="number" value={this.state.num} />
           <button onClick={() => this.add(this.state.num)}>add</button>
           <button onClick={() => this.delayAdd(this.state.num)}>async</button>
+        </div>
+        <div>
+          <button onClick={inc}>INC</button>
+          <button onClick={dec}>DEC</button>
+          <button onClick={cancel}>CANCAL INC</button>
         </div>
       </h1>
     );
@@ -59,7 +66,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   asyncEvent: (num) => {
     dispatch(asyncEvent(num));
-  }
+  },
+  inc: () => dispatch(inc()),
+  dec: () => dispatch(dec()),
+  cancel: () => dispatch(cancel_inc())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

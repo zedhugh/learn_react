@@ -1,6 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import sagaCreater from 'redux-saga';
 import doctor from './doctorReducers';
+import { INC } from './redux_action';
+import mySaga from './saga';
 
 const ADD = "ADD+";
 
@@ -15,6 +18,9 @@ export const add = (num) => ({
 const counter = (state = 0, action) => {
     if (action.type === ADD) {
         return state + action.num;
+    }
+    if (action.type === INC) {
+        return state + 1;
     }
     return state;
 }
@@ -32,10 +38,14 @@ export const asyncEvent = (num) => (dispatch, getState) => {
     }
 };
 
+const saga = sagaCreater();
+
 export const store = createStore(
     rootReducer,
-    applyMiddleware(thunkMiddleware)
+    applyMiddleware(thunkMiddleware, saga)
 );
+
+saga.run(mySaga);
 
 // store.dispatch(add(10));
 // store.dispatch(asyncEvent(5));
